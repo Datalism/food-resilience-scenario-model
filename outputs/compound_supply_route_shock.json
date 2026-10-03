@@ -1,0 +1,98 @@
+{
+  "schema": "food-resilience-scenario-result-v0.1",
+  "schema_version": "0.1.0",
+  "model": "food-resilience-scenario-model-v0.1.1",
+  "scenario": {
+    "id": "compound-supply-route-shock",
+    "name": "Compound supply and transport shock",
+    "description": "Illustrative counterfactual: potato availability in S\u00f6dermanland falls by half while road capacity from the other two supplying regions falls by 70%."
+  },
+  "interpretation_boundary": "counterfactual_research_not_operational_decision",
+  "metrics": {
+    "total_demand": 25.0,
+    "fulfilled": 16.2,
+    "shortfall": 8.8,
+    "fulfilment_rate": 0.648,
+    "exact_product_fulfilled": 12.2,
+    "substitute_product_fulfilled": 4.0,
+    "needs_with_shortfall": 1,
+    "route_constrained_needs": 1,
+    "mean_feasible_supplier_count": 3.0
+  },
+  "needs": [
+    {
+      "need_id": "need-hosp",
+      "organisation": "Regional Hospital",
+      "product": "Potatoes",
+      "demand": 5.0,
+      "fulfilled": 5.0,
+      "shortfall": 0.0,
+      "fulfilment_rate": 1.0,
+      "feasible_supplier_count": 3,
+      "assignments": [
+        {
+          "offer_id": "offer-a",
+          "supplier": "S\u00f6rmland Farm Cooperative",
+          "matched_product": "Potatoes",
+          "requested_equivalent_quantity": 4.0,
+          "supply_quantity": 4.0,
+          "used_substitution": false,
+          "route_id": "route-a-h",
+          "route_mode": "road"
+        },
+        {
+          "offer_id": "offer-b",
+          "supplier": "\u00d6sterg\u00f6tland Growers",
+          "matched_product": "Potatoes",
+          "requested_equivalent_quantity": 1.0,
+          "supply_quantity": 1.0,
+          "used_substitution": false,
+          "route_id": "route-b-h",
+          "route_mode": "road"
+        }
+      ]
+    },
+    {
+      "need_id": "need-muni",
+      "organisation": "Stockholm Municipal Kitchens",
+      "product": "Potatoes",
+      "demand": 20.0,
+      "fulfilled": 11.2,
+      "shortfall": 8.8,
+      "fulfilment_rate": 0.56,
+      "feasible_supplier_count": 3,
+      "assignments": [
+        {
+          "offer_id": "offer-b",
+          "supplier": "\u00d6sterg\u00f6tland Growers",
+          "matched_product": "Potatoes",
+          "requested_equivalent_quantity": 3.6,
+          "supply_quantity": 3.6,
+          "used_substitution": false,
+          "route_id": "route-b-m",
+          "route_mode": "road"
+        },
+        {
+          "offer_id": "offer-c",
+          "supplier": "V\u00e4stmanland Farm Group",
+          "matched_product": "Potatoes",
+          "requested_equivalent_quantity": 3.6,
+          "supply_quantity": 3.6,
+          "used_substitution": false,
+          "route_id": "route-c-m",
+          "route_mode": "road"
+        },
+        {
+          "offer_id": "offer-sub",
+          "supplier": "S\u00f6rmland Farm Cooperative",
+          "matched_product": "Carrots",
+          "requested_equivalent_quantity": 4.0,
+          "supply_quantity": 4.0,
+          "used_substitution": true,
+          "route_id": "route-a-m",
+          "route_mode": "road"
+        }
+      ]
+    }
+  ]
+}

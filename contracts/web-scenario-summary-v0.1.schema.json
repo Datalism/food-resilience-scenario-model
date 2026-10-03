@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitalcrossroads.example/schemas/food-resilience-web-scenario-summary-v0.1.schema.json",
+  "title": "Food Resilience Website Scenario Summary v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "content_type",
+    "warning",
+    "scenario",
+    "resilience_judgement",
+    "metrics",
+    "comparison_to_baseline"
+  ],
+  "properties": {
+    "schema": {
+      "const": "food-resilience-web-scenario-summary-v0.1"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string"
+    },
+    "content_type": {
+      "const": "scenario_illustration"
+    },
+    "warning": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "resilience_judgement": {
+      "enum": [
+        "strong",
+        "strained",
+        "severely_strained"
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_demand",
+        "fulfilled",
+        "shortfall",
+        "fulfilment_rate",
+        "exact_product_fulfilled",
+        "substitute_product_fulfilled",
+        "needs_with_shortfall",
+        "route_constrained_needs",
+        "mean_feasible_supplier_count"
+      ],
+      "properties": {
+        "total_demand": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shortfall": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "exact_product_fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "substitute_product_fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "needs_with_shortfall": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "route_constrained_needs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mean_feasible_supplier_count": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "comparison_to_baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_fulfilment_rate",
+        "scenario_fulfilment_rate",
+        "fulfilment_rate_change",
+        "shortfall_change",
+        "supplier_option_change"
+      ],
+      "properties": {
+        "baseline_fulfilment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "scenario_fulfilment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fulfilment_rate_change": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "shortfall_change": {
+          "type": "number"
+        },
+        "supplier_option_change": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

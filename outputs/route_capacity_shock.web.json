@@ -1,0 +1,31 @@
+{
+  "schema": "food-resilience-web-scenario-summary-v0.1",
+  "schema_version": "0.1.0",
+  "source": "Food Resilience Scenario Model v0.1.1",
+  "content_type": "scenario_illustration",
+  "warning": "Counterfactual research output. Do not present as the current food-risk assessment or as an operational allocation.",
+  "scenario": {
+    "id": "route-capacity-shock",
+    "name": "Regional transport-capacity shock",
+    "description": "Illustrative counterfactual: road capacity from \u00d6sterg\u00f6tland and V\u00e4stmanland to Stockholm falls by 70%."
+  },
+  "resilience_judgement": "severely_strained",
+  "metrics": {
+    "total_demand": 25.0,
+    "fulfilled": 19.2,
+    "shortfall": 5.8,
+    "fulfilment_rate": 0.768,
+    "exact_product_fulfilled": 15.2,
+    "substitute_product_fulfilled": 4.0,
+    "needs_with_shortfall": 1,
+    "route_constrained_needs": 1,
+    "mean_feasible_supplier_count": 3.0
+  },
+  "comparison_to_baseline": {
+    "baseline_fulfilment_rate": 1.0,
+    "scenario_fulfilment_rate": 0.768,
+    "fulfilment_rate_change": -0.232,
+    "shortfall_change": 5.8,
+    "supplier_option_change": 0.0
+  }
+}

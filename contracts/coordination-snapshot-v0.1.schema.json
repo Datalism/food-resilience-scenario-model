@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitalcrossroads.example/schemas/food-resilience-coordination-snapshot-v0.1.schema.json",
+  "title": "Food Resilience Coordination Snapshot v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "node_version",
+    "decision_boundary",
+    "organisations",
+    "locations",
+    "products",
+    "offers",
+    "needs",
+    "capacities",
+    "routes",
+    "substitutions",
+    "disruptions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "food-resilience-coordination-snapshot-v0.1"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "node_version": {
+      "type": "string"
+    },
+    "decision_boundary": {
+      "const": "read_only_export_no_commitment"
+    },
+    "organisations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/organisation"
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/product"
+      }
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/offer"
+      }
+    },
+    "needs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/need"
+      }
+    },
+    "capacities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capacity"
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "substitutions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/substitution"
+      }
+    },
+    "disruptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/disruption"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "organisation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "org_type",
+        "region"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string"
+        },
+        "org_type": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "organisation_id",
+        "name",
+        "region",
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "organisation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "code",
+        "name",
+        "category",
+        "default_unit"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "default_unit": {
+          "type": "string"
+        }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "organisation_id",
+        "location_id",
+        "product_id",
+        "quantity",
+        "unit",
+        "unit_price",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "organisation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/id"
+        },
+        "product_id": {
+          "$ref": "#/$defs/id"
+        },
+        "quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "unit_price": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "need": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "organisation_id",
+        "location_id",
+        "product_id",
+        "quantity",
+        "unit",
+        "priority",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "organisation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/id"
+        },
+        "product_id": {
+          "$ref": "#/$defs/id"
+        },
+        "quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "capacity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "organisation_id",
+        "location_id",
+        "kind",
+        "quantity",
+        "unit",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "organisation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "organisation_id",
+        "origin_location_id",
+        "destination_location_id",
+        "mode",
+        "nominal_capacity",
+        "available_capacity",
+        "unit",
+        "cost_per_unit",
+        "lead_time_hours",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "organisation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "origin_location_id": {
+          "$ref": "#/$defs/id"
+        },
+        "destination_location_id": {
+          "$ref": "#/$defs/id"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "nominal_capacity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "available_capacity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "cost_per_unit": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "lead_time_hours": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "substitution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_product_id",
+        "substitute_product_id",
+        "substitute_ratio",
+        "rationale"
+      ],
+      "properties": {
+        "requested_product_id": {
+          "$ref": "#/$defs/id"
+        },
+        "substitute_product_id": {
+          "$ref": "#/$defs/id"
+        },
+        "substitute_ratio": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "disruption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "region",
+        "severity",
+        "product_id",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "severity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "product_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

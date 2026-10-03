@@ -1,0 +1,31 @@
+{
+  "id": "compound-supply-route-shock",
+  "name": "Compound supply and transport shock",
+  "description": "Illustrative counterfactual: potato availability in Södermanland falls by half while road capacity from the other two supplying regions falls by 70%.",
+  "effects": [
+    {
+      "type": "offer_quantity_factor",
+      "product_code": "POTATO-SE",
+      "region": "Södermanland",
+      "factor": 0.5
+    },
+    {
+      "type": "route_capacity_factor",
+      "origin_region": "Östergötland",
+      "destination_region": "Stockholm",
+      "factor": 0.3
+    },
+    {
+      "type": "route_capacity_factor",
+      "origin_region": "Västmanland",
+      "destination_region": "Stockholm",
+      "factor": 0.3
+    }
+  ],
+  "schema": "food-resilience-scenario-definition-v0.1",
+  "schema_version": "0.1.0",
+  "content_type": "scenario_assumption",
+  "assumptions": [
+    "Counterfactual research scenario; not a forecast."
+  ]
+}

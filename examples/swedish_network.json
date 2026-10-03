@@ -1,0 +1,256 @@
+{
+  "schema": "food-resilience-coordination-snapshot-v0.1",
+  "node_version": "0.2.0",
+  "decision_boundary": "read_only_export_no_commitment",
+  "organisations": [
+    {
+      "id": "farm-a",
+      "name": "Sörmland Farm Cooperative",
+      "org_type": "producer",
+      "region": "Södermanland"
+    },
+    {
+      "id": "farm-b",
+      "name": "Östergötland Growers",
+      "org_type": "producer",
+      "region": "Östergötland"
+    },
+    {
+      "id": "farm-c",
+      "name": "Västmanland Farm Group",
+      "org_type": "producer",
+      "region": "Västmanland"
+    },
+    {
+      "id": "buyer-muni",
+      "name": "Stockholm Municipal Kitchens",
+      "org_type": "municipality",
+      "region": "Stockholm"
+    },
+    {
+      "id": "buyer-hosp",
+      "name": "Regional Hospital",
+      "org_type": "hospital",
+      "region": "Stockholm"
+    },
+    {
+      "id": "carrier",
+      "name": "Lake Freight Cooperative",
+      "org_type": "logistics",
+      "region": "Stockholm"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc-a",
+      "organisation_id": "farm-a",
+      "name": "Sörmland site",
+      "region": "Södermanland",
+      "latitude": 59.03,
+      "longitude": 16.59
+    },
+    {
+      "id": "loc-b",
+      "organisation_id": "farm-b",
+      "name": "Östergötland site",
+      "region": "Östergötland",
+      "latitude": 58.41,
+      "longitude": 15.62
+    },
+    {
+      "id": "loc-c",
+      "organisation_id": "farm-c",
+      "name": "Västmanland site",
+      "region": "Västmanland",
+      "latitude": 59.61,
+      "longitude": 16.55
+    },
+    {
+      "id": "loc-muni",
+      "organisation_id": "buyer-muni",
+      "name": "Municipal kitchens",
+      "region": "Stockholm",
+      "latitude": 59.33,
+      "longitude": 18.07
+    },
+    {
+      "id": "loc-hosp",
+      "organisation_id": "buyer-hosp",
+      "name": "Hospital",
+      "region": "Stockholm",
+      "latitude": 59.35,
+      "longitude": 18.03
+    }
+  ],
+  "products": [
+    {
+      "id": "potato",
+      "code": "POTATO-SE",
+      "name": "Potatoes",
+      "category": "vegetable",
+      "default_unit": "tonne"
+    },
+    {
+      "id": "carrot",
+      "code": "CARROT-SE",
+      "name": "Carrots",
+      "category": "vegetable",
+      "default_unit": "tonne"
+    }
+  ],
+  "offers": [
+    {
+      "id": "offer-a",
+      "organisation_id": "farm-a",
+      "location_id": "loc-a",
+      "product_id": "potato",
+      "quantity": 8,
+      "unit": "tonne",
+      "unit_price": 4.2,
+      "status": "open"
+    },
+    {
+      "id": "offer-b",
+      "organisation_id": "farm-b",
+      "location_id": "loc-b",
+      "product_id": "potato",
+      "quantity": 11,
+      "unit": "tonne",
+      "unit_price": 4.0,
+      "status": "open"
+    },
+    {
+      "id": "offer-c",
+      "organisation_id": "farm-c",
+      "location_id": "loc-c",
+      "product_id": "potato",
+      "quantity": 7,
+      "unit": "tonne",
+      "unit_price": 4.4,
+      "status": "open"
+    },
+    {
+      "id": "offer-sub",
+      "organisation_id": "farm-a",
+      "location_id": "loc-a",
+      "product_id": "carrot",
+      "quantity": 4,
+      "unit": "tonne",
+      "unit_price": 4.1,
+      "status": "open"
+    }
+  ],
+  "needs": [
+    {
+      "id": "need-hosp",
+      "organisation_id": "buyer-hosp",
+      "location_id": "loc-hosp",
+      "product_id": "potato",
+      "quantity": 5,
+      "unit": "tonne",
+      "priority": 70,
+      "status": "open"
+    },
+    {
+      "id": "need-muni",
+      "organisation_id": "buyer-muni",
+      "location_id": "loc-muni",
+      "product_id": "potato",
+      "quantity": 20,
+      "unit": "tonne",
+      "priority": 30,
+      "status": "open"
+    }
+  ],
+  "capacities": [],
+  "routes": [
+    {
+      "id": "route-a-h",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-a",
+      "destination_location_id": "loc-hosp",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    },
+    {
+      "id": "route-b-h",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-b",
+      "destination_location_id": "loc-hosp",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    },
+    {
+      "id": "route-c-h",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-c",
+      "destination_location_id": "loc-hosp",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    },
+    {
+      "id": "route-a-m",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-a",
+      "destination_location_id": "loc-muni",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    },
+    {
+      "id": "route-b-m",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-b",
+      "destination_location_id": "loc-muni",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    },
+    {
+      "id": "route-c-m",
+      "organisation_id": "carrier",
+      "origin_location_id": "loc-c",
+      "destination_location_id": "loc-muni",
+      "mode": "road",
+      "nominal_capacity": 12,
+      "available_capacity": 12,
+      "unit": "tonne",
+      "cost_per_unit": 0.35,
+      "lead_time_hours": 6,
+      "status": "available"
+    }
+  ],
+  "substitutions": [
+    {
+      "requested_product_id": "potato",
+      "substitute_product_id": "carrot",
+      "substitute_ratio": 1.0,
+      "rationale": "Illustrative institutional-menu substitution; human approval required in the Node."
+    }
+  ],
+  "disruptions": [],
+  "schema_version": "0.1.0"
+}

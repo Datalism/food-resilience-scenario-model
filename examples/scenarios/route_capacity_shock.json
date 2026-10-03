@@ -1,0 +1,25 @@
+{
+  "id": "route-capacity-shock",
+  "name": "Regional transport-capacity shock",
+  "description": "Illustrative counterfactual: road capacity from Östergötland and Västmanland to Stockholm falls by 70%.",
+  "effects": [
+    {
+      "type": "route_capacity_factor",
+      "origin_region": "Östergötland",
+      "destination_region": "Stockholm",
+      "factor": 0.3
+    },
+    {
+      "type": "route_capacity_factor",
+      "origin_region": "Västmanland",
+      "destination_region": "Stockholm",
+      "factor": 0.3
+    }
+  ],
+  "schema": "food-resilience-scenario-definition-v0.1",
+  "schema_version": "0.1.0",
+  "content_type": "scenario_assumption",
+  "assumptions": [
+    "Counterfactual research scenario; not a forecast."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "baseline",
+  "name": "Baseline network",
+  "description": "No counterfactual shock applied.",
+  "effects": [],
+  "schema": "food-resilience-scenario-definition-v0.1",
+  "schema_version": "0.1.0",
+  "content_type": "scenario_assumption",
+  "assumptions": [
+    "Counterfactual research scenario; not a forecast."
+  ]
+}

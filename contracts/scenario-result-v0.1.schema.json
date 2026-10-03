@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitalcrossroads.example/schemas/food-resilience-scenario-result-v0.1.schema.json",
+  "title": "Food Resilience Scenario Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model",
+    "scenario",
+    "interpretation_boundary",
+    "metrics",
+    "needs"
+  ],
+  "properties": {
+    "schema": {
+      "const": "food-resilience-scenario-result-v0.1"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "model": {
+      "type": "string"
+    },
+    "scenario": {
+      "$ref": "#/$defs/scenario"
+    },
+    "interpretation_boundary": {
+      "const": "counterfactual_research_not_operational_decision"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_demand",
+        "fulfilled",
+        "shortfall",
+        "fulfilment_rate",
+        "exact_product_fulfilled",
+        "substitute_product_fulfilled",
+        "needs_with_shortfall",
+        "route_constrained_needs",
+        "mean_feasible_supplier_count"
+      ],
+      "properties": {
+        "total_demand": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shortfall": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "exact_product_fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "substitute_product_fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "needs_with_shortfall": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "route_constrained_needs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mean_feasible_supplier_count": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "needs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/needResult"
+      }
+    }
+  },
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offer_id",
+        "supplier",
+        "matched_product",
+        "requested_equivalent_quantity",
+        "supply_quantity",
+        "used_substitution",
+        "route_id",
+        "route_mode"
+      ],
+      "properties": {
+        "offer_id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "supplier": {
+          "type": "string"
+        },
+        "matched_product": {
+          "type": "string"
+        },
+        "requested_equivalent_quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "supply_quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "used_substitution": {
+          "type": "boolean"
+        },
+        "route_id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "route_mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "needResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "need_id",
+        "organisation",
+        "product",
+        "demand",
+        "fulfilled",
+        "shortfall",
+        "fulfilment_rate",
+        "feasible_supplier_count",
+        "assignments"
+      ],
+      "properties": {
+        "need_id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "organisation": {
+          "type": "string"
+        },
+        "product": {
+          "type": "string"
+        },
+        "demand": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shortfall": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fulfilment_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "feasible_supplier_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assignment"
+          }
+        }
+      }
+    }
+  }
+}
